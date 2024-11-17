@@ -1,10 +1,10 @@
 <?php
 
-    $hname = 'localhost';
-    $uname = 'root';
-    $pass = '';
-    $db = 'gymko';
-    $con = mysqli_connect($hname, $uname, $pass, $db);
+$hname = getenv('DB_HOST');  // Database host from .env
+$uname = getenv('DB_USERNAME');  // Database username from .env
+$pass = getenv('DB_PASSWORD');  // Database password from .env
+$db = getenv('DB_DATABASE');  // Database name from .env
+$port = getenv('DB_PORT'); 
 
     if(!$con)
     {
