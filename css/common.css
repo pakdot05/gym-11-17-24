@@ -1,0 +1,189 @@
+:root {
+    --blue: #134B70;
+    --blue-hover: #508C9B;
+    --red: #EEEEEE;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.h-font {
+    font-family: "Great Vibes", cursive;
+}
+
+body {
+    background-color: white;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.navbar {
+    background-color: #323232!important;
+}
+
+.logo-img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.whover:hover {
+    color: white !important;
+}
+
+nav .nav-link {
+    color: #f8f8f8 !important;
+    position: relative;
+}
+
+nav .nav-link:hover,
+nav .nav-link:focus {
+    color: var(--blue-hover) !important;
+}
+
+nav .nav-link::after {
+    content: "";
+    height: 4px;
+    width: 100%;
+    background: white;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -16px;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none !important;
+}
+
+nav .nav-link:hover::after,
+nav .nav-link:focus::after {
+    opacity: 1 !important;
+    background: var(--blue-hover);
+}
+
+.navbar .nav-link.active-nav-link {
+    color: var(--blue-hover) !important;
+}
+.navbar-brand {
+    font-size: 2rem;  /* Match the size of the <h2> */
+    font-weight: bold; /* Ensure bold is applied */
+    text-align: center; /* Center if necessary */
+    color: white; /* Match the text color */
+}
+
+
+.drop button {
+    color: white !important;
+    border: 1px solid white !important;
+    font-weight: 500;
+}
+
+.drop button:hover {
+    background-color: var(--blue-hover) !important;
+    color: white !important;
+    border: 1px solid var(--blue-hover) !important;
+}
+
+.custom-bg-outline {
+    border: 1px solid var(--blue) !important;
+    color: var(--blue);
+}
+
+.custom-bg-outline:hover {
+    background-color: var(--blue-hover) !important;
+    border-color: var(--blue-hover) !important;
+    color: white;
+}
+
+.custom-bg {
+    background-color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+.custom-out {
+    border: 1px solid var(--blue) !important;
+    border-color: var(--blue) !important;
+    color: var(--blue);
+}
+
+.custom-out:hover {
+    background-color: var(--blue-hover) !important;
+    border-color: var(--blue-hover) !important;
+    color: white;
+}
+
+.custom-bg:hover {
+    background-color: var(--blue-hover);
+    border-color: var(--blue-hover);
+}
+
+.custom-drop {
+    color: white !important;
+}
+
+.custom-drop:hover {
+    background-color: var(--blue-hover);
+    color: #096066;
+}
+
+.h-line {
+    width: 150px;
+    margin: 0 auto;
+    height: 1.7px;
+}
+
+.iconlinks a:hover {
+    color: var(--blue-hover) !important;
+}
+
+.custom-alert {
+    position: fixed;
+    top: 80px;
+    right: 25px;
+    animation: slideOutRight 4s forwards;
+    z-index: 1111;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cccccc;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #adadad;
+}
+
+@keyframes slideOutRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    75% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
