@@ -5,7 +5,7 @@ $uname = getenv('DB_USERNAME');  // Database username from .env
 $pass = getenv('DB_PASSWORD');  // Database password from .env
 $db = getenv('DB_DATABASE');  // Database name from .env
 $port = getenv('DB_PORT'); 
-
+$con = mysqli_connect($hname, $uname, $pass, $db, $port);
     if(!$con)
     {
         die("Cannot connect to database.".mysqli_connect_error());
