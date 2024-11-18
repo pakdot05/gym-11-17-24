@@ -145,7 +145,7 @@ if (isset($_POST['login'])) {
             echo 'inactive';
         } else {
             if (!password_verify($data['pass'], $u_fetch['password'])) {
-                echo 'invalid_pass';
+                echo 'inactive';
             } else {
                 // session_start();
                 $_SESSION['login'] = true;
@@ -156,7 +156,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['uStatus'] = $u_fetch['appointment_status'];
                 $_SESSION['uDob'] = $u_fetch['dob'];
                 $_SESSION['uAdd'] = $u_fetch['address'];
-
+                 echo 'invalid_pass';
                 echo 1;
             }
         }
