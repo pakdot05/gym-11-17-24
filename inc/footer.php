@@ -210,7 +210,7 @@
                 // else{
                 //     window.location = window.location.href;
                 // }  
-                 alert(this.responseText);
+                console.log(this.responseText);
             }
         }
 
