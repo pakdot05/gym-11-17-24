@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <?php
 
     // Initialize variables for pre-filled data
