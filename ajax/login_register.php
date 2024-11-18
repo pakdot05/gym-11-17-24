@@ -145,7 +145,7 @@ if (isset($_POST['login'])) {
             echo 'inactive';
         } else {
             if (password_verify($data['pass'], $u_fetch['password'])) {
-                 // session_start();
+                 session_start();
                 $_SESSION['login'] = true;
                 if( $_SESSION['login']){
                 
