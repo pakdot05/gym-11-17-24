@@ -4,7 +4,7 @@
     adminLogin();
 
     if(isset($_POST['get_approved_count'])) {
-        $query = "SELECT COUNT(*) AS total FROM `bookings` WHERE `status` = 1";
+        $query = "SELECT COUNT(*) AS total FROM bookings WHERE status = 1";
         $result = select($query);
 
         if ($result) {
@@ -31,7 +31,7 @@
     $product_count = $product_row['product_count'];
 
     $today_date = date('Y-m-d');
-    $today_booking_result = mysqli_query($con, "SELECT COUNT(*) AS booking_count FROM bookings WHERE `date` = '$today_date'");
+    $today_booking_result = mysqli_query($con, "SELECT COUNT(*) AS booking_count FROM bookings WHERE date = '$today_date'");
     $today_booking_row = mysqli_fetch_assoc($today_booking_result);
     $today_booking_count = $today_booking_row['booking_count'];
     
@@ -40,7 +40,17 @@
     $earnings_row = mysqli_fetch_assoc($earnings_result);
     $total_earnings = $earnings_row['total_earnings'] ?? 0;
 
-    // Get the top 20 active users with order/subscription count
+    $order_result = mysqli_query($con, "SELECT COUNT(*) AS order_count FROM orders");
+    $order_row = mysqli_fetch_assoc($order_result);
+    $order_count = $order_row['order_count'];
+
+    $ordearnings_result = mysqli_query($con, "SELECT SUM(total_price) AS total_ordearnings FROM orders WHERE payment_status = 'paid'");
+    $ordearnings_row = mysqli_fetch_assoc($ordearnings_result);
+    $total_ordearnings = $ordearnings_row['total_ordearnings'] ?? 0;
+
+    $equipment_result = mysqli_query($con, "SELECT COUNT(*) AS equipment_count FROM equipment");
+    $equipment_row = mysqli_fetch_assoc($equipment_result);
+    $equipment_count = $equipment_row['equipment_count']; 
     $sql = "SELECT 
                 user_name,
                 COUNT(*) AS total_activities
@@ -100,12 +110,13 @@
         }
 
         .dashboard-box {
-            padding: 20px;
+            padding: 5px;
             background-color: var(--blue);
             border-radius: 8px;
             text-align: center;
             transition: background-color 0.3s ease;
         }
+
 
         .dashboard-box:hover {
             background-color: var(--blue-hover);
@@ -316,6 +327,7 @@ td {
                             <h5>Subscriber</h5>
                             <i class="fa fa-bell m-2" style="font-size:30px;"></i>
                             <p>Total Subscriber: <?php echo $subscribe_count; ?></p>
+                             <p>Total Earn: ₱<?php echo number_format($total_earnings, 2); ?></p>
                         </div>
                     </a>
                 </div>
@@ -342,11 +354,21 @@ td {
                 </div>
 
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <a href="invoices.php" class="dashboard-link">
+                    <a href="product_sales.php" class="dashboard-link">
                         <div class="dashboard-box">
-                            <h5>Earn</h5>
-                            <i class="fa fa-money m-2" style="font-size:30px;"></i>
-                            <p>Total Earnings: ₱<?php echo number_format($total_earnings, 2); ?></p>
+                            <h5>Order</h5>
+                            <i class="fa fa-shopping-cart m-2" style="font-size:30px;"></i>
+                            <p>Total order: <?php echo $order_count; ?></p>
+                             <p>Total Earn: ₱<?php echo number_format($total_ordearnings, 2); ?></p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <a href="equipment.php" class="dashboard-link">
+                        <div class="dashboard-box">
+                            <h5>Equipment</h5>
+                            <i class="fa fa-cogs m-2" style="font-size:30px;"></i> 
+                            <p>Equipment: <?php echo $equipment_count; ?></p>
                         </div>
                     </a>
                 </div>
