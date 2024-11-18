@@ -1,7 +1,12 @@
+<?php
+session_start();
+
+// Start output buffering to prevent header errors
+ob_start();
+?>
 
 <?php
-ob_start();
-session_start();
+
 require('inc/links.php');
 if (!isset($_SESSION['uId'])) {
     die("User not logged in");
