@@ -58,7 +58,7 @@ function uploadImage($image, $folder)
         $rname = 'IMG_' . random_int(11111, 99999) . ".".$ext; 
     
         $img_path = UPLOAD_IMAGE_PATH . $folder . $rname;
-
+        echo $img_path;
         // Move the uploaded file to the destination path
         if (move_uploaded_file($image['tmp_name'], $img_path)) {
             return $rname; // Image upload successful
