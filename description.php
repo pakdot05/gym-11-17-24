@@ -158,7 +158,7 @@ function redirectToXendit($amount, $plan, $interval, $description, $paymentId) {
             $insertStmt->execute();
             $insertStmt->close();
 
-            header('Location: ' . $responseData['invoice_url']);
+            
             exit;
         } else {
             echo 'Error: ' . $responseData['message'];
