@@ -147,7 +147,7 @@ if (isset($_POST['login'])) {
             if (password_verify($data['pass'], $u_fetch['password'])) {
                  session_start();
                 $_SESSION['login'] = true;
-                if( $_SESSION['login']{
+                if( $_SESSION['login']){
                    echo 'inv_email_mob';
                 }else{
                 echo 'inactive';
