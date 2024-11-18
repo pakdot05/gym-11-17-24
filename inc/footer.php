@@ -205,7 +205,7 @@
             else{
                 let fileurl = window.location.href.split('/').pop().split('?').shift();
                 if(fileurl == 'trainor_details.php'){
-                    // window.location = window.location.href;
+                    window.location = window.location.href;
                 }
                 else{
                     // window.location = window.location.pathname;
