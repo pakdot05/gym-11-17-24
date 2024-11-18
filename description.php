@@ -1,9 +1,6 @@
-<?php
-session_start();
-?>
 
 <?php
-
+ob_start();
 require('inc/links.php');
 if (!isset($_SESSION['uId'])) {
     die("User not logged in");
