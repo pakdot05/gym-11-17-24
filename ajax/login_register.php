@@ -148,7 +148,7 @@ if (isset($_POST['login'])) {
                  session_start();
                 $_SESSION['login'] = true;
                 if( $_SESSION['login']{
-                   echo 1;
+                   echo 'inv_email_mob';
                 }else{
                 echo 'inactive';
                 }
