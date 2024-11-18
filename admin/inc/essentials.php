@@ -9,7 +9,7 @@ define('SITE_URL','http://hcwg048oo8k8k8s84g0o04cg.146.190.103.211.sslip.io/');
     
     //BACK END PURPOSE
 
-    define('UPLOAD_IMAGE_PATH',$_SERVER['DOCUMENT_ROOT'].'/app/images/');
+    define('UPLOAD_IMAGE_PATH',$_SERVER['DOCUMENT_ROOT'].'/gymko/images/');
     define('ABOUT_FOLDER','about/');
     define('CAROUSEL_FOLDER','carousel/');
     define('USERS_FOLDER','users/');
