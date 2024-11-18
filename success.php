@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <?php
 ini_set('session.gc_maxlifetime', 3600); // Set session timeout to 1 hour
 session_set_cookie_params(3600); // Match cookie lifetime to session lifetime
