@@ -144,11 +144,9 @@ if (isset($_POST['login'])) {
         if ($u_fetch['status'] == 0) {
             echo 'inactive';
         } else {
-            if (!password_verify($data['pass'], $u_fetch['password'])) {
-                echo 'inactive';
-            } else {
-                session_start();
-                echo 'invalid_pass';
+            if (password_verify($data['pass'], $u_fetch['password'])) {
+               
+                  session_start();
                 $_SESSION['login'] = true;
                 $_SESSION['uId'] = $u_fetch['user_id'];
                 $_SESSION['uName'] = $u_fetch['name'];
@@ -157,7 +155,10 @@ if (isset($_POST['login'])) {
                 $_SESSION['uStatus'] = $u_fetch['appointment_status'];
                 $_SESSION['uDob'] = $u_fetch['dob'];
                 $_SESSION['uAdd'] = $u_fetch['address'];
+
                 echo 1;
+            } else {
+               echo 'invalid_pass';
             }
         }
     }
