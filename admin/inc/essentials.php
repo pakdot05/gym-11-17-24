@@ -15,11 +15,6 @@ define('SITE_URL','http://hcwg048oo8k8k8s84g0o04cg.146.190.103.211.sslip.io/');
     define('USERS_FOLDER','users/');
     define('TRAINORS_FOLDER','trainors/');
 
-// Ensure folders exist or create them if necessary
-if (!is_dir(UPLOAD_IMAGE_PATH . ABOUT_FOLDER)) {
-    mkdir(UPLOAD_IMAGE_PATH . ABOUT_FOLDER, 0777, true);  // Create 'about' folder if not exists
-}
-
     function adminLogin()
     {
         session_start();
