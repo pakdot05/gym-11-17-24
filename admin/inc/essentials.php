@@ -2,17 +2,18 @@
 
     //FRONT END PURPOSE
 
-define('SITE_URL', 'https://' . $_SERVER['HTTP_HOST'] . '/');  // More flexible URL definition
-define('ABOUT_IMG_PATH', SITE_URL . 'images/about/');
-define('CAROUSEL_IMG_PATH', SITE_URL . 'images/carousel/');
-define('TRAINORS_IMG_PATH', SITE_URL . 'images/trainors/');
+define('SITE_URL','http://hcwg048oo8k8k8s84g0o04cg.146.190.103.211.sslip.io/');
+    define('ABOUT_IMG_PATH',SITE_URL.'images/about/');
+    define('CAROUSEL_IMG_PATH',SITE_URL.'images/carousel/');
+    define('TRAINORS_IMG_PATH',SITE_URL.'images/trainors/');
+    
+    //BACK END PURPOSE
 
-// Backend Paths
-define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT'] . '/gymko/images/'); // Absolute server path
-define('ABOUT_FOLDER', 'about/');
-define('CAROUSEL_FOLDER', 'carousel/');
-define('USERS_FOLDER', 'users/');
-define('TRAINORS_FOLDER', 'trainors/');
+    define('UPLOAD_IMAGE_PATH',$_SERVER['DOCUMENT_ROOT'].'/gymko/images/');
+    define('ABOUT_FOLDER','about/');
+    define('CAROUSEL_FOLDER','carousel/');
+    define('USERS_FOLDER','users/');
+    define('TRAINORS_FOLDER','trainors/');
 
 // Ensure folders exist or create them if necessary
 if (!is_dir(UPLOAD_IMAGE_PATH . ABOUT_FOLDER)) {
