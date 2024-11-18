@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <?php
 
     require('inc/links.php');
