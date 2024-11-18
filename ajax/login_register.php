@@ -146,7 +146,7 @@ if (isset($_POST['login'])) {
         } else {
             if (password_verify($data['pass'], $u_fetch['password'])) {
                  session_start();
-                $_SESSION['login'] = true;
+                $_SESSION['login'] = false;
                 if( $_SESSION['login']){
                 
                 $_SESSION['uId'] = $u_fetch['user_id'];
