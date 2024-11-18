@@ -109,7 +109,7 @@ function redirectToXendit($amount, $plan, $interval, $description, $paymentId) {
         'description' => "Subscription for $plan plan ($interval) - $description",
         'customer_name' => $userName,
         'customer_email' => $userEmail,
-        'success_redirect_url' => 'http://127.0.0.1/gymko/success.php?paymentId=' . $paymentId,
+        'success_redirect_url' => http://hcwg048oo8k8k8s84g0o04cg.146.190.103.211.sslip.io/success.php?paymentId=' . $paymentId,
         'failure_redirect_url' => 'https://your-website.com/failure.php',
         'currency' => 'PHP',
     ];
