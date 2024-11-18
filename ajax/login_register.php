@@ -141,7 +141,7 @@ if (isset($_POST['login'])) {
         echo 'inv_email_mob';
     } else {
         $u_fetch = mysqli_fetch_assoc($u_exist);
-        if ($u_fetch['status'] == 1) {
+        if ($u_fetch['status'] == 0) {
             echo 'inactive';
         } else {
             if (!password_verify($data['pass'], $u_fetch['password'])) {
