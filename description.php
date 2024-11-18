@@ -176,6 +176,7 @@ if (isset($_POST['confirm_subscription'])) {
 
     redirectToXendit($amount, $plan, $interval, $description, $paymentId);
 }
+ob_end_flush();
 
 ?>
 
