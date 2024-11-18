@@ -1,4 +1,5 @@
 <?php 
+$_SESSION['login'] = true;
 echo $_SESSION['login'];
 ?>
 
