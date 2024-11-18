@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <?php
 
 function build_calendar($month, $year, $trainor_id) {
