@@ -1,6 +1,5 @@
-<?php 
-session_start();
-?>
+
+
 <?php
 
 require('inc/links.php');
@@ -157,8 +156,8 @@ function redirectToXendit($amount, $plan, $interval, $description, $paymentId) {
             $insertStmt->bind_param("issssssss", $userId, $userName, $userEmail, $plan, $amount, $interval, $description, $paymentId, $endDate); 
             $insertStmt->execute();
             $insertStmt->close();
-
-            
+    
+            header('Location: ' . $responseData['invoice_url']);        
             exit;
         } else {
             echo 'Error: ' . $responseData['message'];
