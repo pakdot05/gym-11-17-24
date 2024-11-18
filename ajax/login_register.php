@@ -148,7 +148,7 @@ if (isset($_POST['login'])) {
                  session_start();
                 $_SESSION['login'] = true;
                 if( $_SESSION['login']){
-                echo  $u_fetch['user_id'];
+                
                 $_SESSION['uId'] = $u_fetch['user_id'];
                 $_SESSION['uName'] = $u_fetch['name'];
                 $_SESSION['uEmail'] = $u_fetch['email'];
@@ -156,6 +156,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['uStatus'] = $u_fetch['appointment_status'];
                 $_SESSION['uDob'] = $u_fetch['dob'];
                 $_SESSION['uAdd'] = $u_fetch['address'];
+                echo  $_SESSION['uEmail';
                 }else{
                 echo 'inactive';
                 }
