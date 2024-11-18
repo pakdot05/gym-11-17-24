@@ -148,6 +148,7 @@ if (isset($_POST['login'])) {
                  session_start();
                 $_SESSION['login'] = true;
                 if( $_SESSION['login']){
+                echo  $u_fetch['user_id'];
                 $_SESSION['uId'] = $u_fetch['user_id'];
                 $_SESSION['uName'] = $u_fetch['name'];
                 $_SESSION['uEmail'] = $u_fetch['email'];
