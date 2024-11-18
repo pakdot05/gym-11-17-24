@@ -36,35 +36,45 @@
 $monthlySales = getMonthlySales($con);
 $monthlyUserCounts = getMonthlyUserCounts($con); // New function to get user counts
 
-// Function to retrieve monthly sales data
+
 function getMonthlySales($con) {
     $currentYear = date('Y');
     $salesData = array_fill(1, 12, 0); // Initialize with 0 for each month
-    // SQL Query to fetch sales for the current month, grouped by month
-    $sql = "SELECT 
-                MONTH(o.created_at) AS month,
-                SUM(o.price) AS total_sales
-            FROM 
-                orders o
-            WHERE 
-                o.payment_status = 'paid' AND YEAR(o.created_at) = $currentYear
-            GROUP BY month
-            UNION ALL
-            SELECT 
-                MONTH(s.created_at) AS month,
-                SUM(s.price) AS total_sales
-            FROM 
-                subscriptions s
-            WHERE 
-                YEAR(s.created_at) = $currentYear
-            GROUP BY month";
-    $result = mysqli_query($con, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $salesData[$row['month']] = $row['total_sales'];
+    // Query for orders
+    $sqlOrders = "SELECT 
+                    MONTH(o.created_at) AS month,
+                    SUM(o.price) AS total_sales
+                FROM 
+                    orders o
+                WHERE 
+                    o.payment_status = 'paid' AND YEAR(o.created_at) = $currentYear
+                GROUP BY month";
+    $resultOrders = mysqli_query($con, $sqlOrders);
+
+    if (mysqli_num_rows($resultOrders) > 0) {
+        while ($row = mysqli_fetch_assoc($resultOrders)) {
+            $salesData[$row['month']] += $row['total_sales']; // Add to existing value
         }
     }
+
+    // Query for subscriptions
+    $sqlSubscriptions = "SELECT 
+                        MONTH(s.created_at) AS month,
+                        SUM(s.price) AS total_sales
+                    FROM 
+                        subscriptions s
+                    WHERE 
+                        YEAR(s.created_at) = $currentYear
+                    GROUP BY month";
+    $resultSubscriptions = mysqli_query($con, $sqlSubscriptions);
+
+    if (mysqli_num_rows($resultSubscriptions) > 0) {
+        while ($row = mysqli_fetch_assoc($resultSubscriptions)) {
+            $salesData[$row['month']] += $row['total_sales']; // Add to existing value
+        }
+    }
+
     return $salesData;
 }
 
@@ -72,31 +82,41 @@ function getMonthlySales($con) {
 function getMonthlyUserCounts($con) {
     $currentYear = date('Y');
     $userCounts = array_fill(1, 12, 0); // Initialize with 0 for each month
-    // SQL Query to fetch user counts for each month
-    $sql = "SELECT 
-                MONTH(o.created_at) AS month,
-                COUNT(DISTINCT o.user_name) AS user_count
-            FROM 
-                orders o
-            WHERE 
-                o.payment_status = 'paid' AND YEAR(o.created_at) = $currentYear
-            GROUP BY month
-            UNION ALL
-            SELECT 
-                MONTH(s.created_at) AS month,
-                COUNT(DISTINCT s.name) AS user_count
-            FROM 
-                subscriptions s
-            WHERE 
-                s.payment_status = 'paid' AND YEAR(s.created_at) = $currentYear
-            GROUP BY month";
-    $result = mysqli_query($con, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $userCounts[$row['month']] = $row['user_count'];
+    // Query for orders, counting unique usernames even if user_id is missing
+    $sqlOrders = "SELECT 
+                    MONTH(o.created_at) AS month,
+                    COUNT(DISTINCT o.user_name) AS user_count 
+                FROM 
+                    orders o
+                WHERE 
+                    o.payment_status = 'paid' AND YEAR(o.created_at) = $currentYear
+                GROUP BY month";
+    $resultOrders = mysqli_query($con, $sqlOrders);
+
+    if (mysqli_num_rows($resultOrders) > 0) {
+        while ($row = mysqli_fetch_assoc($resultOrders)) {
+            $userCounts[$row['month']] += $row['user_count'];
         }
     }
+
+    // Query for subscriptions, counting unique usernames
+    $sqlSubscriptions = "SELECT 
+                        MONTH(s.created_at) AS month,
+                        COUNT(DISTINCT s.name) AS user_count
+                    FROM 
+                        subscriptions s
+                    WHERE 
+                        s.payment_status = 'paid' AND YEAR(s.created_at) = $currentYear
+                    GROUP BY month";
+    $resultSubscriptions = mysqli_query($con, $sqlSubscriptions);
+
+    if (mysqli_num_rows($resultSubscriptions) > 0) {
+        while ($row = mysqli_fetch_assoc($resultSubscriptions)) {
+            $userCounts[$row['month']] += $row['user_count'];
+        }
+    }
+
     return $userCounts;
 }
 ?>
@@ -329,7 +349,7 @@ function getMonthlyUserCounts($con) {
                         backgroundColor: 'rgba(0, 123, 255, 0.5)', // Add a distinct color for user count
                         borderColor: 'rgba(0, 123, 255, 1)',
                         borderWidth: 1,
-                        type: 'bar', // Make this dataset a line chart to overlay over the bars
+                        type: 'line', // Make this dataset a line chart to overlay over the bars
                         fill: false // Don't fill the line
                     }
                 ]
@@ -388,7 +408,7 @@ searchInput.addEventListener('input', function () {
 
     // Use AJAX to send the search query to the server
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `search_users.php?search=${encodeURIComponent(query)}`, true);
+    xhr.open('GET', search_users.php?search=${encodeURIComponent(query)}, true);
 
     xhr.onload = function () {
         if (xhr.status === 200) {
