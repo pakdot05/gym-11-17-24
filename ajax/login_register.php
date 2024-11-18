@@ -148,7 +148,6 @@ if (isset($_POST['login'])) {
                echo 'inactive';
   
 
-                echo 1;
             } else {
                echo 'invalid_pass';
             }
