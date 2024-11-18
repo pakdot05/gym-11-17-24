@@ -1,6 +1,3 @@
-<?php 
-session_start();
-?>
 
 <?php
     $contact_q = "SELECT * FROM `contact_details` WHERE `contact_id`=?";
