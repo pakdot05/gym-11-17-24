@@ -192,6 +192,7 @@
         xhr.open("POST","ajax/login_register.php",true);
 
         xhr.onload = function(){
+            console.log(this.responseText);
             if(this.responseText == 'inv_email_mob'){
                 alert('error',"Invalid Email/Mobile number!");
             }
