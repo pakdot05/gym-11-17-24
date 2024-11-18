@@ -208,7 +208,7 @@
                     window.location = window.location.href;
                 }
                 else{
-                    // window.location = window.location.pathname;
+                    window.location = window.location.href;
                 }             
             }
         }
