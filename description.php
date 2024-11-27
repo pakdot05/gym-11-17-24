@@ -1,9 +1,4 @@
-<?php
-session_start();
 
-// Start output buffering to prevent header errors
-ob_start();
-?>
 
 <?php
 
