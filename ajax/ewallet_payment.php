@@ -77,7 +77,7 @@ function redirectToXendit($amount, $userName, $userEmail, $paymentId) {
             'email' => $userEmail,
         ],
         'currency' => 'PHP',
-        'success_redirect_url' => 'http://127.0.0.1/gymko/prodsuccess.php?paymentId=' . $paymentId,
+        'success_redirect_url' => 'http://v8040gs8o4cgwkok8wo80csk.178.128.125.251.sslip.io/prodsuccess.php?paymentId=' . $paymentId,
         'failure_redirect_url' => 'http://127.0.0.1/failure.php',
     ];
 
