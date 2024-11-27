@@ -1,8 +1,3 @@
-<?php
-ob_start(); // Start output buffering
-session_start(); 
-ob_end_flush(); // Send the buffered output to the browser
-?>
 
 <?php
 
