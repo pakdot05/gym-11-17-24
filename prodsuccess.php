@@ -84,8 +84,7 @@ session_start();
 <body>
 
 <?php 
-  
-   session_start();
+
 
    
    // If session data was saved during the payment process
