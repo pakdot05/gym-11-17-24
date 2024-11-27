@@ -2,8 +2,6 @@
 session_start();
 ?>
 <?php
-ini_set('session.gc_maxlifetime', 3600); // Set session timeout to 1 hour
-session_set_cookie_params(3600); // Match cookie lifetime to session lifetime
 
 require('inc/links.php'); // Include your database connection and other necessary files
 use PHPMailer\PHPMailer\PHPMailer;
@@ -43,7 +41,6 @@ $updateStmt = $con->prepare($updateQuery);
 $updateStmt->bind_param("s", $paymentId);
 $updateStmt->execute();
 $updateStmt->close();
-session_regenerate_id(true); 
 // Send the confirmation email
 require_once './phpmailer/src/Exception.php';
 require_once './phpmailer/src/PHPMailer.php';
