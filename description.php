@@ -1,7 +1,11 @@
+<?php
+ob_start(); // Start output buffering
 
+ob_end_flush(); // Send the buffered output to the browser
+?>
 
 <?php
-session_start(); 
+
 require('inc/links.php');
 if (!isset($_SESSION['uId'])) {
     die("User not logged in");
