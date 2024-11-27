@@ -1,6 +1,8 @@
-
-<?php
+<?php 
 ob_start();
+session_start();
+?>
+<?php
 
 require('inc/links.php');
 if (!isset($_SESSION['uId'])) {
