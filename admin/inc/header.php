@@ -100,7 +100,7 @@
 <div class="container-fluid ambot text-light p-3 d-flex align-items-center justify-content-between sticky-top">
     <div class="d-flex align-items-center">
         <a href="https://r.search.yahoo.com/_ylt=AwrKFyeq.mxmw14SbaazRwx.;_ylu=Y29sbwNzZzMEcG9zAzEEdnRpZAMEc2VjA3Ny/RV=2/RE=1718446891/RO=10/RU=https%3a%2f%2fweb.facebook.com%2fMinglanillaDentalClinic%2f/RK=2/RS=7yvecSnF0Y43YkmiECpXqcOj7po-">
-            <img src="../images/logo.jpg" alt="Logo" class="logo">
+            <img src="images/logo.jpg" alt="Logo" class="logo">
         </a>
         <a class="navbar-brand" style="font-size: 1.2rem; font-weight: bold; text-align: center; color: white;"> Gym Samurai</a>
     </div>
