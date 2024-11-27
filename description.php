@@ -1,6 +1,10 @@
 
 <?php
-
+ob_start();
+// Start the session after including files that might output content
+session_start(); 
+ini_set('session.gc_maxlifetime', 3600); // Set session timeout to 1 hour
+session_set_cookie_params(3600);
 require('inc/links.php');
 if (!isset($_SESSION['uId'])) {
     die("User not logged in");
